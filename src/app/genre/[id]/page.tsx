@@ -1,9 +1,26 @@
-import React from 'react'
+import MovieContainer from "@/components/movieContainer";
+import { getDiscoverMovies } from "@/lib/getMovies";
 
-const GenrePage = () => {
-  return (
-    <div>GenrePage</div>
-  )
+interface Props {
+  params: {
+    id: string;
+  };
+  searchParams: {
+    genre: string;
+  };
 }
 
-export default GenrePage
+const GenrePage = async ({
+  params: { id },
+  searchParams: { genre },
+}: Props) => {
+  const movies = await getDiscoverMovies(id);
+  return (
+    <div className="py-10 max-w-screen-xl mx-auto">
+      <h2 className="text-4xl font-bold px-10 mb-5" >{genre}</h2>
+      <MovieContainer movies={movies} title="Genre" isVertical />
+    </div>
+  );
+};
+
+export default GenrePage;
