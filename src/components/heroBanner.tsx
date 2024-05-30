@@ -12,7 +12,7 @@ interface Props {
 const HeroBanner = ({ movies }: Props) => {
   const [emblaRef] = useEmblaCarousel({ loop: false }, [AutoPlay()]);
 
-  // Batasi jumlah movies yang ditampilkan menjadi maksimal 6
+  // Batasi 6
   const limitedMovies = movies.slice(0, 6);
 
   return (
